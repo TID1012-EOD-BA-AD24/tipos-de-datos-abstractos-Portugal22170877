@@ -19,19 +19,62 @@ public class Conjunto {
 	//añade un elemento si no está en el conjunto
 	public Conjunto añadir(Object elemento)
 	{
+		if (pertenece(elemento)) {
+			return this; // El elemento ya está presente, no se hace nada
+		}
+	
+		// Verificar si el conjunto está lleno
+		if (cardinal >= capacidad) {
+			// Aumentar la capacidad
+			capacidad *= 2;
+			Object[] nuevoCto = new Object[capacidad];
+			System.arraycopy(cto, 0, nuevoCto, 0, cto.length);
+			cto = nuevoCto;
+		}
+	
+		// Agregar el nuevo elemento
+		cto[cardinal++] = elemento;
+		return this;
 		//coloque aquí el código faltante
 		
 		
 	}
-	//quita el elemento del conjunto
+	
 
 	public Conjunto retirar(Object elemento)
 	{
+		int i;
+    for (i = 0; i < cardinal; i++) {
+        if (cto[i].equals(elemento)) {
+            break;
+        }
+    }
+
+    // Si el elemento no está en el conjunto
+    if (i == cardinal) {
+        return this; // No se hace nada
+    }
+
+    // Mover los elementos posteriores hacia la izquierda
+    for (int j = i; j < cardinal - 1; j++) {
+        cto[j] = cto[j + 1];
+    }
+
+    // Decrementar el cardinal
+    cto[--cardinal] = null;
+    return this;
 		//coloque aquí el código faltante
+
 	}
 	//busca si un elemento pertenece al conjunto
 	public boolean pertenece(Object elemento)
 	{
+		for (int i = 0; i < cardinal; i++) {
+			if (cto[i].equals(elemento)) {
+				return true; // El elemento está en el conjunto
+			}
+		}
+		return false; // El elemento no está en el conjunto
 		//coloque aquí el código faltante
 	}
 	//devuelve el número de elementos

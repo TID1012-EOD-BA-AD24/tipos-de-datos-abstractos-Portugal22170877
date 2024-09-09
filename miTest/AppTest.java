@@ -144,6 +144,8 @@ class AppTest {
 
         c2.añadir(3);
         c2.añadir(4);
+
+        
         c2.añadir(5);
         c3=c1.union(c2);
         assertTrue(c3.cardinal()==5);
