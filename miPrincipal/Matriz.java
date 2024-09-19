@@ -32,20 +32,18 @@ public class Matriz {
         return matriz;
     }
     
-    
-    public void asignarMatriz(int r ,int c ,int valor) throws PosicionIlegalException{
-        if (r>=n || c>=m || r<0 || c<0){
+    public void asignarMatriz(int r,int c,int valor) throws PosicionIlegalException{
+        if(r>=n || c>=m || r<0 || m<0){
             throw new PosicionIlegalException();
         }
-        //coloca aquí el código faltante
-
+         matriz[r][c]=valor;
     }
+
     public int infoMat(int r, int c) throws PosicionIlegalException{ 
         if (r>=n || c>=m || r<0 || m<0){
             throw new PosicionIlegalException();
         }
         return matriz[r][c];
-        //coloca aquí el código faltante
     }
     public int filasMat(){
         return n;
